@@ -14,7 +14,297 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          champion_id: string | null
+          channel: string
+          created_at: string
+          event_id: string | null
+          id: string
+          org_id: string
+          sent_at: string | null
+          status: string
+        }
+        Insert: {
+          champion_id?: string | null
+          channel?: string
+          created_at?: string
+          event_id?: string | null
+          id?: string
+          org_id: string
+          sent_at?: string | null
+          status?: string
+        }
+        Update: {
+          champion_id?: string | null
+          channel?: string
+          created_at?: string
+          event_id?: string | null
+          id?: string
+          org_id?: string
+          sent_at?: string | null
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "alerts_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "champions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "alerts_event_id_fkey"
+            columns: ["event_id"]
+            isOneToOne: false
+            referencedRelation: "events"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "alerts_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      champion_positions: {
+        Row: {
+          champion_id: string
+          company: string
+          created_at: string
+          end_date: string | null
+          id: string
+          is_current: boolean | null
+          start_date: string | null
+          title: string | null
+          updated_at: string
+        }
+        Insert: {
+          champion_id: string
+          company: string
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          is_current?: boolean | null
+          start_date?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Update: {
+          champion_id?: string
+          company?: string
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          is_current?: boolean | null
+          start_date?: string | null
+          title?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "champion_positions_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "champions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      champions: {
+        Row: {
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          linkedin_url: string | null
+          org_id: string
+          source: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          linkedin_url?: string | null
+          org_id: string
+          source?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          linkedin_url?: string | null
+          org_id?: string
+          source?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "champions_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      events: {
+        Row: {
+          champion_id: string | null
+          created_at: string
+          id: string
+          occurred_at: string
+          org_id: string
+          payload: Json | null
+          type: string
+        }
+        Insert: {
+          champion_id?: string | null
+          created_at?: string
+          id?: string
+          occurred_at?: string
+          org_id: string
+          payload?: Json | null
+          type: string
+        }
+        Update: {
+          champion_id?: string | null
+          created_at?: string
+          id?: string
+          occurred_at?: string
+          org_id?: string
+          payload?: Json | null
+          type?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "events_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "champions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "events_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      integrations: {
+        Row: {
+          access: Json | null
+          created_at: string
+          id: string
+          is_active: boolean | null
+          org_id: string
+          provider: string
+          updated_at: string
+        }
+        Insert: {
+          access?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          org_id: string
+          provider: string
+          updated_at?: string
+        }
+        Update: {
+          access?: Json | null
+          created_at?: string
+          id?: string
+          is_active?: boolean | null
+          org_id?: string
+          provider?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "integrations_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      organizations: {
+        Row: {
+          created_at: string
+          domain: string | null
+          id: string
+          industry: string | null
+          name: string
+          size: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          domain?: string | null
+          id?: string
+          industry?: string | null
+          name: string
+          size?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          domain?: string | null
+          id?: string
+          industry?: string | null
+          name?: string
+          size?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          email: string | null
+          full_name: string | null
+          id: string
+          org_id: string | null
+          role: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id: string
+          org_id?: string | null
+          role?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          email?: string | null
+          full_name?: string | null
+          id?: string
+          org_id?: string | null
+          role?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "profiles_org_id_fkey"
+            columns: ["org_id"]
+            isOneToOne: false
+            referencedRelation: "organizations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
