@@ -2,7 +2,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { MapPin, Briefcase, Star, ExternalLink, Building2 } from "lucide-react";
+import { MapPin, Briefcase, Star, ExternalLink, Building } from "lucide-react";
 
 interface ChampionCardProps {
   champion: {
@@ -71,7 +71,7 @@ export function ChampionCard({ champion }: ChampionCardProps) {
       
       <CardContent className="space-y-3">
         <div className="flex items-center space-x-2 text-sm">
-          <Building2 className="h-4 w-4 text-muted-foreground" />
+          <Building className="h-4 w-4 text-muted-foreground" />
           <span className="font-medium">{champion.company}</span>
         </div>
         
