@@ -1,11 +1,12 @@
 {
   "info": {
     "name": "Champion Agent API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    "description": "API collection for Champion Agent application",
+    "version": "1.0.0"
   },
   "item": [
     {
-      "name": "Import: Salesforce",
+      "name": "Gmail Send",
       "request": {
         "method": "POST",
         "header": [
@@ -16,66 +17,12 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"org_id\": \"{{org_id}}\"\n}"
+          "raw": "{\n  \"org_id\": \"your-org-id\",\n  \"to\": \"recipient@example.com\",\n  \"subject\": \"Test Email\",\n  \"body\": \"<h1>Hello World</h1>\"\n}"
         },
         "url": {
-          "raw": "{{site}}/.netlify/functions/import-salesforce",
+          "raw": "{{baseUrl}}/.netlify/functions/gmail-send",
           "host": [
-            "{{site}}"
-          ],
-          "path": [
-            ".netlify",
-            "functions",
-            "import-salesforce"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Import: HubSpot",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"org_id\": \"{{org_id}}\"\n}"
-        },
-        "url": {
-          "raw": "{{site}}/.netlify/functions/import-hubspot",
-          "host": [
-            "{{site}}"
-          ],
-          "path": [
-            ".netlify",
-            "functions",
-            "import-hubspot"
-          ]
-        }
-      }
-    },
-    {
-      "name": "Send Email (Gmail)",
-      "request": {
-        "method": "POST",
-        "header": [
-          {
-            "key": "Content-Type",
-            "value": "application/json"
-          }
-        ],
-        "body": {
-          "mode": "raw",
-          "raw": "{\n  \"org_id\": \"{{org_id}}\",\n  \"to\": \"user@example.com\",\n  \"subject\": \"Hello\",\n  \"body\": \"<p>Hi</p>\"\n}"
-        },
-        "url": {
-          "raw": "{{site}}/.netlify/functions/gmail-send",
-          "host": [
-            "{{site}}"
+            "{{baseUrl}}"
           ],
           "path": [
             ".netlify",
@@ -86,18 +33,82 @@
       }
     },
     {
-      "name": "Process Alerts (manual trigger)",
+      "name": "Outlook Send",
       "request": {
         "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"your-org-id\",\n  \"to\": \"recipient@example.com\",\n  \"subject\": \"Test Email\",\n  \"body\": \"<h1>Hello World</h1>\"\n}"
+        },
         "url": {
-          "raw": "{{site}}/.netlify/functions/process-alerts",
+          "raw": "{{baseUrl}}/.netlify/functions/outlook-send",
           "host": [
-            "{{site}}"
+            "{{baseUrl}}"
           ],
           "path": [
             ".netlify",
             "functions",
-            "process-alerts"
+            "outlook-send"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Import Salesforce",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"your-org-id\",\n  \"limit\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/.netlify/functions/import-salesforce",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "import-salesforce"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Import HubSpot",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"your-org-id\",\n  \"limit\": 100\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/.netlify/functions/import-hubspot",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "import-hubspot"
           ]
         }
       }
@@ -105,12 +116,9 @@
   ],
   "variable": [
     {
-      "key": "site",
-      "value": "http://localhost:8888"
-    },
-    {
-      "key": "org_id",
-      "value": "YOUR-ORG-ID"
+      "key": "baseUrl",
+      "value": "https://your-app.netlify.app",
+      "type": "string"
     }
   ]
 }
