@@ -1,0 +1,116 @@
+{
+  "info": {
+    "name": "Champion Agent API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Import: Salesforce",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"{{org_id}}\"\n}"
+        },
+        "url": {
+          "raw": "{{site}}/.netlify/functions/import-salesforce",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "import-salesforce"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Import: HubSpot",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"{{org_id}}\"\n}"
+        },
+        "url": {
+          "raw": "{{site}}/.netlify/functions/import-hubspot",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "import-hubspot"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Send Email (Gmail)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"org_id\": \"{{org_id}}\",\n  \"to\": \"user@example.com\",\n  \"subject\": \"Hello\",\n  \"body\": \"<p>Hi</p>\"\n}"
+        },
+        "url": {
+          "raw": "{{site}}/.netlify/functions/gmail-send",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "gmail-send"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Process Alerts (manual trigger)",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "{{site}}/.netlify/functions/process-alerts",
+          "host": [
+            "{{site}}"
+          ],
+          "path": [
+            ".netlify",
+            "functions",
+            "process-alerts"
+          ]
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "site",
+      "value": "http://localhost:8888"
+    },
+    {
+      "key": "org_id",
+      "value": "YOUR-ORG-ID"
+    }
+  ]
+}

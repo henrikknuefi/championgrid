@@ -1,0 +1,23 @@
+[[scheduled.functions]]
+  name = "process-alerts"
+  cron = "*/1 * * * *"
+
+[[scheduled.functions]]
+  name = "detect-moves"
+  cron = "*/5 * * * *"
+
+[[scheduled.functions]]
+  name = "run-sequences"
+  cron = "*/10 * * * *"
+
+[[scheduled.functions]]
+  name = "refresh-oauth"
+  cron = "0 */6 * * *"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+  X-Frame-Options = "SAMEORIGIN"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  Permissions-Policy = "camera=(), microphone=(), geolocation=()"
