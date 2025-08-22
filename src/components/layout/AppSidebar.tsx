@@ -25,7 +25,7 @@ import {
 } from "@/components/ui/sidebar";
 
 const navigationItems = [
-  { title: "Dashboard", url: "/", icon: BarChart3 },
+  { title: "Dashboard", url: "/dashboard", icon: BarChart3 },
   { title: "Champions", url: "/champions", icon: Users },
   { title: "Companies", url: "/companies", icon: Building2 },
   { title: "Activities", url: "/activities", icon: Activity },
@@ -45,7 +45,7 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
 
   const isActive = (path: string) => {
-    if (path === "/") return currentPath === "/";
+    if (path === "/dashboard") return currentPath === "/dashboard";
     return currentPath.startsWith(path);
   };
 
