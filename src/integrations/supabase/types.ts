@@ -54,6 +54,13 @@ export type Database = {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "alerts_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "v_current_positions"
+            referencedColumns: ["champion_id"]
+          },
+          {
             foreignKeyName: "alerts_event_id_fkey"
             columns: ["event_id"]
             isOneToOne: false
@@ -110,6 +117,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "champions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "champion_positions_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "v_current_positions"
+            referencedColumns: ["champion_id"]
           },
         ]
       }
@@ -189,6 +203,13 @@ export type Database = {
             isOneToOne: false
             referencedRelation: "champions"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "events_champion_id_fkey"
+            columns: ["champion_id"]
+            isOneToOne: false
+            referencedRelation: "v_current_positions"
+            referencedColumns: ["champion_id"]
           },
           {
             foreignKeyName: "events_org_id_fkey"
@@ -305,9 +326,41 @@ export type Database = {
           },
         ]
       }
+      sequence_enrollments: {
+        Row: {
+          created_at: string | null
+          id: string
+          next_at: string | null
+          status: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          next_at?: string | null
+          status: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          next_at?: string | null
+          status?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
-      [_ in never]: never
+      v_current_positions: {
+        Row: {
+          champion_id: string | null
+          company: string | null
+          start_date: string | null
+          title: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never
