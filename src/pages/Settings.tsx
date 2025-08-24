@@ -8,8 +8,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Switch } from '@/components/ui/switch';
 import { Separator } from '@/components/ui/separator';
-import { Settings as SettingsIcon, User, Shield, Bell, Database, Loader2, LogOut } from 'lucide-react';
+import { Settings as SettingsIcon, User, Shield, Bell, Database, Loader2, LogOut, Palette } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function Settings() {
   const { user, signOut, resetPassword } = useAuth();
@@ -72,6 +73,10 @@ export default function Settings() {
           <TabsTrigger value="notifications" className="flex items-center gap-2">
             <Bell className="w-4 h-4" />
             Notifications
+          </TabsTrigger>
+          <TabsTrigger value="appearance" className="flex items-center gap-2">
+            <Palette className="w-4 h-4" />
+            Appearance
           </TabsTrigger>
           <TabsTrigger value="integrations" className="flex items-center gap-2">
             <Database className="w-4 h-4" />
@@ -265,6 +270,20 @@ export default function Settings() {
               <Button disabled>
                 Save Notification Settings (Coming Soon)
               </Button>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="appearance">
+          <Card>
+            <CardHeader>
+              <CardTitle>Appearance Settings</CardTitle>
+              <CardDescription>
+                Customize the look and feel of your interface
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <ThemeToggle />
             </CardContent>
           </Card>
         </TabsContent>
